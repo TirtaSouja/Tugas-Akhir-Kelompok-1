@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2019 at 05:07 PM
+-- Generation Time: Jun 02, 2019 at 06:30 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -101,10 +101,7 @@ INSERT INTO `tbl_kebutuhan` (`id`, `jumlah`, `status`, `tanggal_update`, `id_rea
 (4, 9, 1, '2019-06-02 06:44:08', 22),
 (5, 9, 1, '2019-06-02 06:44:43', 22),
 (6, 9, 1, '2019-06-02 06:45:36', 22),
-(7, 9, 1, '2019-06-02 06:45:46', 22),
-(8, 9, 0, '2019-06-02 06:45:46', 22),
-(9, 7, 1, '2019-06-02 06:59:35', 22),
-(10, 7, 1, '2019-06-02 06:59:47', 22);
+(7, 9, 1, '2019-06-02 06:45:46', 22);
 
 -- --------------------------------------------------------
 
@@ -212,7 +209,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `password`, `role`, `username`) VALUES
-(1, '$2a$10$AhriFuDF0/MhKamspgrdGewNCZjddoibaFw3kHOAGIWM.znelfChe', 'admin', 'tirta');
+(1, '$2a$10$AhriFuDF0/MhKamspgrdGewNCZjddoibaFw3kHOAGIWM.znelfChe', 'admin', 'tirta'),
+(2, '$2a$10$AhriFuDF0/MhKamspgrdGewNCZjddoibaFw3kHOAGIWM.znelfChe', 'staff', 'souja');
 
 --
 -- Indexes for dumped tables
@@ -291,7 +289,7 @@ ALTER TABLE `tbl_jenis_pemeriksaan`
 -- AUTO_INCREMENT for table `tbl_kebutuhan`
 --
 ALTER TABLE `tbl_kebutuhan`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_pasien`
@@ -321,7 +319,7 @@ ALTER TABLE `tbl_supplies`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
