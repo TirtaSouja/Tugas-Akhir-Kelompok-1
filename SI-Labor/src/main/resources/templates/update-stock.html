@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: updateStock"></div>
+	<br>&nbsp;&nbsp;&nbsp;
+	<button type="button" th:style="'font-weight: bold; width: 9%;'"
+		class="btn btn-large btn-warning"
+		th:attr="onClick=|window.location.href='/'|">Back</button>
+	<br>
+	<br>
+	<div class="container" style="padding-left: 395px;">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card" style="width: 395px;">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<center>
+							<b><h3>Update Persediaan</h3></b>
+						</center>
+					</div>
+					<form th:action="@{/lab/stok/ubah/}" th:object="${stok}"
+						method="POST">
+						<input type="hidden" name="id_reagen" th:value="${id}" />
+						<div class="card-body">
+							<table>
+								<tr height="55" th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="id">ID
+											</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><input type="text" name="id"
+										th:value="${id}" disabled="disabled" class="form-control" /></td>
+								</tr>
+								<tr height="55" th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="jenis">Jenis</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><input type="text" name="jenis" th:value="${jenis}"
+										class="form-control" /></td>
+								</tr>
+								<tr height="55" th:style="'font-weight: bold;'">
+									<td><label for="nama">Nama</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><input type="text" name="nama" th:value="${nama}"
+										class="form-control" /></td>
+								</tr>
+								<tr height="55" th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="jumlah">Jumlah</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><input type="number" name="jumlah" th:value="${jumlah}"
+										class="form-control" /></td>
+								</tr>
+								<tr height="55" th:style="'font-weight: bold;'">
+									<td><label for="deskripsi">Deskripsi</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><input type="text" name="deskripsi" th:value="${deskripsi}"
+										class="form-control" /></td>
+								</tr>
+							</table>
+							<br>
+							<center>
+								<button type="submit" class="btn btn-large btn-warning"
+									th:style="'font-weight: bold; width: 115px;'">Submit</button>
+							</center>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

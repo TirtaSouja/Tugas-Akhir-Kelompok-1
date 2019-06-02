@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: welcome" ></div>
+	<br><br><br><br><br><br>
+	<h1 class="text-center"></h1>
+	<div class="container-fluid" style="width: 1260px; padding-left: 300px">
+		
+		<div class="row">
+			<div class="text-center col-xs-4 col-lg-4">
+				<div class="card">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<h3><b>Login</b></h3>
+					</div>
+					
+					<div class="card-body" th:style="'background: #d7ff8e;'">
+						<tr>
+							<td>
+								<a th:href="@{/login}">
+    								<img alt="Login" title="Login" th:src="@{/images/login.png}"/>
+								</a>
+							</td>
+						</tr>
+					</div>
+				</div>
+			</div>
+			<div class="text-center col-xs-4 col-lg-4">
+				<div class="card">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<h3><b>Register</b></h3>
+					</div>
+					<div class="card-body" th:style="'background: #d7ff8e;'">
+						<tr>
+							<td>
+								<a th:href="@{/register}">
+    								<img alt="Register" title="Register" th:src="@{/images/register.png}"/>
+								</a>
+							</td>
+						</tr>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br />
+	</div>
+</body>
+</html>

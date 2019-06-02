@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: viewCheckup"></div>
+	<br>&nbsp;&nbsp;&nbsp;
+	<button type="button" class="btn btn-large btn-warning"
+		style="width: 9%; font-weight: bold;" th:attr="onClick=|window.location.href='/'|">Back</button>
+	<br>
+	<br>
+	<center>
+		<h2 th:if="${notFound}" class="error" th:style="${'color: red;'}">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Tidak Ada Data Permintaan Pemeriksaan!</i>
+		</h2>
+	</center>
+	<div class="container" style="padding-left: 205px;">
+		<div class="row">
+			<div class=" col-md-4">
+				<form th:action="@{/lab/pemeriksaan/permintaan}" method="POST">
+					<div class="col-md-4">
+						<div class="row">
+							<div class="text-center col-xs-4 col-lg-4">
+								<div class="card" style="width: 755px;">
+									<div class="card-header" th:style="'background: #f4f129;'">
+										<b><center>
+												<h3>
+													<lable th:text="'Daftar Permintaan Pemeriksaan'"></lable>
+												</h3>
+											</center></b>
+									</div>
+									<center>
+									<form th:action="@{/lab/pemeriksaan/permintaan}" method="GET">
+										<div class="card-body" th:style="'background: #d7ff8e;'">
+											<table>
+												<thead>
+													<tr>
+														<th
+															style="width: 55px; text-align: center; background: #f4f129; border: 3px solid black;">No.</th>
+														<th
+															style="width: 125px; text-align: center; background: #f4f129; border: 3px solid black;">Nama Pasien</th>
+														<th
+															style="width: 195px; text-align: center; background: #f4f129; border: 3px solid black;">Tanggal Permintaan</th>
+														<th
+															style="width: 125px; text-align: center; background: #f4f129; border: 3px solid black;">Status</th>
+														<th
+															style="width: 125px; text-align: center; background: #f4f129; border: 3px solid black;">Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="req, i : ${lPeriksa}"
+														th:style="${i.even} ? 'background: #f4f129;' : 'background:#d7ff8e'">
+														<td style="font-weight: bold; border: 3px solid black; text-align: center; vertical-align: middle;" th:text="${i.count}"></td>
+														<td style="font-weight: bold; border: 3px solid black; text-align: center; vertical-align: middle;" th:text="${req.pasienId.getNama()}"></td>
+														<td style="font-weight: bold; border: 3px solid black; text-align: center; vertical-align: middle;" th:text="${#dates.format(req.tanggalPengajuan, 'dd-MM-yyyy')}"></td>
+														<td style="font-weight: bold; border: 3px solid black; text-align: center; vertical-align: middle;">
+															<span th:if="${req.statusId} == '1'" th:text="Menunggu"></span>
+															<span th:if="${req.statusId} == '2'" th:text="Diproses"></span>
+															<span th:if="${req.statusId} == '3'" th:text="Selesai"></span>
+														</td>
+														<td style="font-weight: bold; border: 3px solid black; text-align: center; vertical-align: middle;">
+																<button type="button" class="btn btn-large btn-warning"
+																	style="width: 105px; font-weight: bold; border: 3px solid black;"
+																	th:attr="onClick=|window.location.href='/lab/pemeriksaan/${req.id}'|">Ubah</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</form>
+									</center>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<br />
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: updateStock"></div>
+	<br>&nbsp;&nbsp;&nbsp;
+	<button type="button" class="btn btn-large btn-warning"
+		th:style="'font-weight: bold; width: 9%;'" th:attr="onClick=|window.location.href='/'|">Home</button>
+	<br>
+	<h2 th:style="${'color: black;'}" class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data
+		Berhasil Diperbaharui!</h2>
+	<br>
+	<div class="container-fluid" style="width: 1260px; padding-left: 410px">
+		<div class="row">
+			<div class="col-xs-4 col-lg-4">
+				<div class="card" style="width: 475px;">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<center>
+							<h3><b>Data Persediaan Laboratorium</b></h3>
+						</center>
+					</div>
+					<center>
+					<form th:action="@{/lab/stok}" method="POST">
+						<div class="card-body">
+							<table>
+								<tr th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="id">ID</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${idStc}"></label></td>
+								</tr>
+								<tr th:style="'font-weight: bold;'">
+									<td><label for="jenis">Jenis</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${jenisStc}"></label></td>
+								</tr>
+								<tr th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="nama">Nama</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${namaStc}"></label></td>
+								</tr>
+								<tr th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="jumlah">Jumlah</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${jmlStc}"></label></td>
+								</tr>
+								<tr th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="desc">Deskripsi</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${descStc}"></label></td>
+								</tr>
+							</table>
+							<br>
+							<table>
+								<thead>
+									<tr>
+										<td>
+											<form th:action="@{/lab/stok/ubah/${idStc}}" method="POST">
+												<button type="button" class="btn btn-large btn-warning"
+													th:style="'font-weight: bold; width: 115px;'"
+													th:attr="onClick=|window.location.href='/lab/stok/ubah/${idStc}'|">Edit
+													This</button>
+											</form>
+										</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"
+												class="btn btn-large btn-warning"
+												th:style="'font-weight: bold; width: 115px;'"
+												th:attr="onClick=|window.location.href='/lab/stok/tambah'|">Input
+												Again</button></td>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</form>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

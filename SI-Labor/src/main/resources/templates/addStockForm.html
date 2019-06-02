@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: home" ></div>
+	<br><br>
+	<h1 class="text-center"></h1>
+	<div class="container-fluid" style="width: 1260px; padding-left: 450px">
+			<div class="row">
+		<div class="text-center col-xs-4 col-lg-4">
+			<div class="card" style="width: 400px;">
+				<div class="card-header" th:style="'background: #f4f129;'"><b><h2>Tambah Persediaan</h2></b></div>
+				<form th:action="@{/lab/stok/tambah}" th:object="${stok}" method="POST">
+					<div class="card-body" th:style="'background: #d7ff8e;'">
+						<label th:style="'font-weight: bold; font-size: 19px;'" for="jenisStc">Jenis: </label>
+						<input th:style="'font-weight: bold; font-size: 19px;'" type="text" name="jenis" class="form-control" required="required"/>
+						<label th:style="'font-weight: bold; font-size: 19px;'" for="namaStc">Nama: </label>
+						<input th:style="'font-weight: bold; font-size: 19px;'" type="text" name="nama" class="form-control" required="required"/>
+						<label th:style="'font-weight: bold; font-size: 19px;'" for="jmlStc">Jumlah: </label>
+						<input th:style="'font-weight: bold; font-size: 19px;'" type="number" name="jumlah" class="form-control" required="required"/>
+						<label th:style="'font-weight: bold; font-size: 19px;'" for="descStc">Deskripsi: </label>
+						<input th:style="'font-weight: bold; font-size: 19px;'" type="text" name="deskripsi" class="form-control" required="required"/>
+						<p>
+						<p>
+							<button type="submit" class="btn btn-large btn-warning" th:style="'font-weight: bold;'">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

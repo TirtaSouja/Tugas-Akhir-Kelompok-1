@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: addKebutuhan"></div>
+	<br>&nbsp;&nbsp;&nbsp;
+	<button type="button" class="btn btn-large btn-warning"
+		th:style="'font-weight: bold;'" th:attr="onClick=|window.location.href='/'|">Home</button>
+	<br>
+	<h2 th:style="${'color: black;'}" class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data
+		Berhasil Ditambahkan!</h2>
+	<br>
+	<div class="container-fluid" style="width: 1260px; padding-left: 370px">
+		<div class="row">
+			<div class="text-center col-xs-4 col-lg-4">
+				<div class="card" style="width: 550px;">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<center>
+							<h3><b>Data Kebutuhan Reagen</b></h3>
+						</center>
+					</div>
+					<center>
+					<form th:action="@{/lab/kebutuhan}" method="POST">
+						<div class="card-body">
+							<table>
+								<tr th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="idReagen">ID Reagen</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${idReagen}"></label></td>
+								</tr>
+								<tr th:style="'font-weight: bold;'">
+									<td><label for="jumlah">Jumlah</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${jumlah}"></label></td>
+								</tr>
+								<tr th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="status">Status</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${status}"></label></td>
+								</tr>
+								<tr th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="tanggal">Tanggal Update</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><label th:text="${tanggal}"></label></td>
+								</tr>
+							</table>
+							<br>
+							<table>
+								<thead>
+									<tr>
+										<td>
+											<form th:action="@{/lab/stok/ubah/${idStc}}" method="POST">
+												<button type="button" class="btn btn-large btn-warning"
+													th:style="'font-weight: bold; width: 115px;'"
+													th:attr="onClick=|window.location.href='/lab/kebutuhan/ubah/${id}'|">Edit
+													This</button>
+											</form>
+										</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"
+												class="btn btn-large btn-warning"
+												th:style="'font-weight: bold; width: 115px;'"
+												th:attr="onClick=|window.location.href='/lab/kebutuhan/tambah'|">Input
+												Again</button></td>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</form>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

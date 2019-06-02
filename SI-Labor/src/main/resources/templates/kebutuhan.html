@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: home" ></div>
+	<br><br><br><br>
+	<h1 class="text-center"></h1>
+	<div class="container-fluid" style="width: 115%; padding-left: 270px" >
+		<div class="row">
+			<div class="text-center col-xs-4 col-lg-4">
+				<div class="card">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<h2><b>Lihat Kebutuhan</b></h2>
+					</div>
+					<div class="card-body" th:style="'background: #d7ff8e;'">
+						<form th:action="@{/lab/kebutuhan}" method="post">
+						<tr>
+							<td>
+								<a th:href="@{/lab/kebutuhan}">
+    								<img alt="Admin Labor" title="Admin Labor" th:src="@{/images/lihat.png}"/>
+								</a>
+							</td>
+						</tr>
+                    </form>
+					</div>
+				</div>
+			</div>
+			<div class="text-center col-xs-4 col-lg-4">
+				<div class="card">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<h2><b>Tambah Kebutuhan</b></h2>
+					</div>
+					<div class="card-body" th:style="'background: #d7ff8e;'">
+						<form th:action="@{/lab/kebutuhan/tambah}" method="post">
+						<tr>
+							<td>
+								<a th:href="@{/lab/kebutuhan/tambah}">
+    								<img alt="Admin Labor" title="Admin Labor" th:src="@{/images/tambah.png}"/>
+								</a>
+							</td>
+						</tr>
+                    </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

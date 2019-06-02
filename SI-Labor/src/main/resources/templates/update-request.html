@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Si-Labor RSCS</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: updateKebutuhan"></div>
+	<br>&nbsp;&nbsp;&nbsp;
+	<button type="button" style="width: 9%;"
+		class="btn btn-large btn-warning"
+		th:attr="onClick=|window.location.href='/'|">Back</button>
+	<br>
+	<br>
+	<div class="container" style="padding-left: 395px;">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card" style="width: 395px;">
+					<div class="card-header" th:style="'background: #f4f129;'">
+						<center>
+							<b><h3>Update Status Permintaan</h3></b>
+						</center>
+					</div>
+					<form th:action="@{/lab/pemeriksaan/ubah/}" th:object="${pemeriksaan}"
+						method="POST">
+						<input type="hidden" name="id" th:value="${idReq}" />
+						<div class="card-body">
+							<table>
+								<tr height="55" th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="id">ID Request
+											</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><input type="text" name="idKeb"
+										th:value="${idReq}" disabled="disabled" class="form-control" /></td>
+								</tr>
+								<tr height="55" th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="statusReq">Status</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td>
+										<select class="form-control" name="statusId" th:if="${status} == '1'">
+				                            <option value="">Pilih Status</option>
+										    <option th:value="1">Menunggu</option>
+										    <option th:value="2">Diproses</option>
+				                        </select>
+				                        <select class="form-control" name="statusId" th:if="${status} == '2'">
+				                            <option value="">Pilih Status</option>
+										    <option th:value="2">Diproses</option>
+										    <option th:value="3">Selesai</option>
+				                        </select>
+				                        <select class="form-control" name="statusId" th:if="${status} == '3'">
+				                            <option value="">Pilih Status</option>
+										    <option th:value="2">Diproses</option>
+										    <option th:value="3">Selesai</option>
+				                        </select>
+									</td>
+								</tr>
+								<tr th:if="${status} == '2'" height="55" th:style="'font-weight: bold;'">
+									<td><label class="text-left" for="hasil">Hasil Pemeriksaan</label></td>
+									<td><label>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+									<td><input type="text" name="hasil" th:value="${hasil}"
+										class="form-control" /></td>
+								</tr>
+							</table>
+							<br>
+							<center>
+								<button type="submit" class="btn btn-large btn-warning"
+									style="font-weight: bold; width: 105px;">Submit</button>
+							</center>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
