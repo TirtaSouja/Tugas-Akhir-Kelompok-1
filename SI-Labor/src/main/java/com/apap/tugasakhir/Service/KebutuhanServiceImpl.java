@@ -42,4 +42,9 @@ public class KebutuhanServiceImpl implements KebutuhanService {
 		
 	}
 
+	@Override
+	public List<KebutuhanModel> getAllPlan() {
+		return kebDB.findAll();
+	}
+
 }

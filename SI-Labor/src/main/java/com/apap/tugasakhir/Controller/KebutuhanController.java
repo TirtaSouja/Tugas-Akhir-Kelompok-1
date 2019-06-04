@@ -1,16 +1,17 @@
 package com.apap.tugasakhir.Controller;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.apap.tugasakhir.Model.KebutuhanModel;
 import com.apap.tugasakhir.Model.SuppliesModel;
@@ -18,6 +19,7 @@ import com.apap.tugasakhir.Service.KebutuhanService;
 import com.apap.tugasakhir.Service.SuppliesService;
 
 @Controller
+@RequestMapping("/lab")
 public class KebutuhanController {
 	@Autowired
 	private KebutuhanService kebService;
@@ -25,21 +27,26 @@ public class KebutuhanController {
 	@Autowired
 	private SuppliesService supService;
 	
-	@RequestMapping(value = "/lab", method = RequestMethod.GET)
+	@GetMapping(value = "/kebutuhan/perencanaan")
+    private List<KebutuhanModel> kebViewAll(@ModelAttribute KebutuhanModel kebModel) {
+        return kebService.getAllPlan();
+    }
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	private String lab(Model model) {
 		model.addAttribute("kebList", kebService.getAllData());
 		model.addAttribute("found", true);
 		return "kebutuhan";
 	}
 	
-	@RequestMapping(value = "/lab/kebutuhan", method = RequestMethod.GET)
+	@GetMapping(value = "/kebutuhan")
 	private String permintaan(Model model) {
 		model.addAttribute("kebList", kebService.getAllData());
 		model.addAttribute("found", true);
 		return "view-reagen";
 	}
 	
-	@RequestMapping(value = "/lab/kebutuhan/tambah", method = RequestMethod.GET)
+	@RequestMapping(value = "/kebutuhan/tambah", method = RequestMethod.GET)
 	private String add(Model model) {
 		List<SuppliesModel> supModel = supService.getAllData();
 		model.addAttribute("supModel", supModel);
@@ -47,7 +54,7 @@ public class KebutuhanController {
 		return "addKebForm";
 	}
 	
-	@RequestMapping(value = "/lab/kebutuhan/tambah", method = RequestMethod.POST)
+	@RequestMapping(value = "/kebutuhan/tambah", method = RequestMethod.POST)
 	private String addKebSubmit(@ModelAttribute KebutuhanModel kebutuhan, Model model) {
 		kebService.addKebutuhan(kebutuhan);
 		model.addAttribute("id", kebutuhan.getId());
@@ -58,14 +65,14 @@ public class KebutuhanController {
 		return "submitKebs";
 	}
 	
-	@RequestMapping(value = "/lab/kebutuhan/ubah/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/kebutuhan/ubah/{id}", method = RequestMethod.GET)
     private String updateKeb(@PathVariable("id") long id, Model model) {
         KebutuhanModel keb = kebService.getKebById(id);
         model.addAttribute("id", id);
 		return "update-kebutuhan";
     }
 	
-	@RequestMapping(value = "/lab/kebutuhan/ubah", method = RequestMethod.POST)
+	@RequestMapping(value = "/kebutuhan/ubah", method = RequestMethod.POST)
 	public String updateKebSubmits(@RequestParam("id") long id,
 			@RequestParam("status") long status,
     		@ModelAttribute KebutuhanModel kebutuhan, Model model) {

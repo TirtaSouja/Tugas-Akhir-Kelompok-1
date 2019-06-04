@@ -16,4 +16,6 @@ public interface KebutuhanService {
 	KebutuhanModel getKebById(long id);
 
 	void updateKebutuhan(KebutuhanModel kebModel);
+
+	List<KebutuhanModel> getAllPlan();
 }

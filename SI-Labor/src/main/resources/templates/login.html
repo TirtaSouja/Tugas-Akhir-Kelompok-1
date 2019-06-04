@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
 <title>Si-Labor RSCS</title>
 <object th:include="fragments/fragment :: css" th:remove="tag"></object>
 <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-	<div th:replace="fragments/fragment :: login" ></div>
+	<div th:replace="fragments/fragment :: login"></div>
 	<br><br><br><br>
 	<h1 class="text-center"></h1>
-	<div class="container-fluid" style="width: 150%; padding-left: 400px" >
-		
+	<div class="container-fluid" style="width: 150%; padding-left: 400px">
+
 		<div class="row">
 			<div class="text-center col-xs-4 col-lg-4">
 				<div class="card">
-				<div th:if="${param.error}">
-                            <span style="color: red">Invalid username or password</span>
-                        </div>
+					<div th:if="${param.error}">
+						<span style="color: red">Invalid username or password</span>
+					</div>
 					<div class="card-header" th:style="'background: #f4f129;'">
-						<h3><b>Please Fulfill This Field Below</b></h3>
+						<h3>
+							<b>Please Fulfill This Field Below</b>
+						</h3>
 					</div>
 					<form th:action="@{/login}" method="POST">
 						<div class="card-body" th:style="'background: #d7ff8e;'">
-						<div class="row form-group">
-                                <label class="col-sm-4" th:style="'font-weight: bold; font-size: 19px;'">Username:</label>
-                                <input type="text" class="col-sm-8 form-control input-sm" name="username">
-                            </div>
-                            <div class="row form-group">
-                                <label class="col-sm-4" th:style="'font-weight: bold; font-size: 19px;'">Password:</label>
-                                <input type="password" class="col-sm-8 form-control input-sm" name="password">
-                            </div>
-								<button type="submit" class="btn btn-large btn-warning" th:style="'font-weight: bold;'">Login</button>
+							<div class="row form-group">
+								<label class="col-sm-4"
+									th:style="'font-weight: bold; font-size: 19px;'">Username:</label>
+								<input type="text" class="col-sm-8 form-control input-sm"
+									name="username">
+							</div>
+							<div class="row form-group">
+								<label class="col-sm-4"
+									th:style="'font-weight: bold; font-size: 19px;'">Password:</label>
+								<input type="password" class="col-sm-8 form-control input-sm"
+									name="password">
+							</div>
+							<button type="submit" class="btn btn-large btn-warning"
+								th:style="'font-weight: bold;'">Login</button>
 						</div>
-					</form>			
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
-		<br />
+	</div>
+	<br />
 </body>
 </html>

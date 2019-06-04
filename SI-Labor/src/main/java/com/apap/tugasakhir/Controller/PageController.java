@@ -15,8 +15,8 @@ public class PageController {
 		return "login";
 	}
 	
-	@RequestMapping("/welcome")
-	public String welcome() {
-		return "welcome";
-	}
+//	@RequestMapping("/welcome")
+//	public String welcome() {
+//		return "welcome";
+//	}
 }
